@@ -21,4 +21,11 @@ resource "random_string" "sufix" {
 # AWS Provider - S3 Storage
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 
-#EXAM Note: Terraform can create up to 10 resources in parallel, it can be customized but 10 is default
+#[----EXAM Note----] Terraform can create up to 10 resources in parallel, it can be customized but 10 is default
+
+#[=======================G-U-I-D-E=============================]#
+# terraform plan -out [NAME_PLAN] -- saves the plan
+# terraform apply "[NAME_PLAN]"
+# Useful when it's needed to execute an specific plan even if the code changes
+# The plan is encoded
+# When apply with a plan, the execution is direct, doesn't ask or re-shows the plan
