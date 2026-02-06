@@ -12,6 +12,6 @@ resource "aws_instance" "public_instance" {
 # e.g. When is needed to create a domain server and a domain member, before the member is created, it is explicitly required to have a domain controller
 # In terraform this is explicitly declared using 'depends_on'
 # e.g.
-# # # # # depends_on {
+# # # # # depends_on [
 # # # # #     aws_subnet=public_subnet
-# # # # # }
+# # # # # ]
