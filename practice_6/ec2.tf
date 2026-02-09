@@ -5,6 +5,7 @@ resource "aws_instance" "public_instance" {
     tags = {
         "Name" = "EC2_Public_Instance"
     }
+    key_name = data.aws_key_pair.key.key_name # Calls the data
 }
 
 # Here on the line 'aws_subnet.public_subnet.id' there's an implicit dependency, where it is needed first create the 'public_subnet' and then create this 'EC2_Public_Instance'
