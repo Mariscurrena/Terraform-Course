@@ -35,9 +35,9 @@ data "aws_availability_zones" "available" {
   }
 }
 
-resource "aws_subnet" "public_subnet"{
-  vpc_id = aws_vpc.vpc_virgin.id
-  cidr_block = var.subnets[0]
+resource "aws_subnet" "public_subnet" {
+  vpc_id                  = aws_vpc.vpc_virgin.id
+  cidr_block              = var.subnets[0]
   map_public_ip_on_launch = true # This creates the public subnet - Public redirection for resources
   # tags = var.tags
   tags = {
@@ -46,15 +46,15 @@ resource "aws_subnet" "public_subnet"{
   availability_zone = data.aws_availability_zones.available.names[0] # First instance of the availability zones
 }
 
-resource "aws_subnet" "private_subnet"{
-  vpc_id = aws_vpc.vpc_virgin.id
+resource "aws_subnet" "private_subnet" {
+  vpc_id     = aws_vpc.vpc_virgin.id
   cidr_block = var.subnets[1]
   # tags = var.tags
   tags = {
     "Name" = "private_subnet"
   }
-  depends_on = [ 
-    aws_subnet.public_subnet 
+  depends_on = [
+    aws_subnet.public_subnet
   ]
 }
 

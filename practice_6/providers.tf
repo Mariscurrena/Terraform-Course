@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = ">=6.15.0, <6.31.0, !=6.15.0" # Constrain: Provider version. Setting limits to avoid the most recent (bugs)
     }
   }
@@ -9,8 +9,8 @@ terraform {
 }
 
 provider "aws" {
-    region = "us-east-1"
-    default_tags { #Apply to all resouces without use tags explicitly
-      tags = var.tags
-    }
+  region = "us-east-1"
+  default_tags { #Apply to all resouces without use tags explicitly
+    tags = var.tags
+  }
 }

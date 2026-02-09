@@ -1,11 +1,11 @@
 resource "aws_instance" "public_instance" {
-    ami           = "ami-0532be01f26a3de55"
-    instance_type = "t3.micro"
-    subnet_id = aws_subnet.public_subnet.id
-    tags = {
-        "Name" = "EC2_Public_Instance"
-    }
-    key_name = data.aws_key_pair.key.key_name # Calls the data
+  ami           = "ami-0532be01f26a3de55"
+  instance_type = "t3.micro"
+  subnet_id     = aws_subnet.public_subnet.id
+  tags = {
+    "Name" = "EC2_Public_Instance"
+  }
+  key_name = data.aws_key_pair.key.key_name # Calls the data
 }
 
 # Here on the line 'aws_subnet.public_subnet.id' there's an implicit dependency, where it is needed first create the 'public_subnet' and then create this 'EC2_Public_Instance'
