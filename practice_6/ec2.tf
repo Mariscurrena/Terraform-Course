@@ -5,16 +5,17 @@ resource "aws_instance" "public_instance" {
   tags = {
     "Name" = "EC2_Public_Instance"
   }
-  key_name = data.aws_key_pair.key.key_name # Calls the data
+  key_name               = data.aws_key_pair.key.key_name # Calls the data
+  vpc_security_group_ids = [aws_security_group.sg_public_instance.id]
 
   # Terraform common behaviour is first destroy, then create
   # Lifecycle supports change these properties
-#   lifecycle {
-#     create_before_destroy = true # Invert the order
-#     # prevent_destroy = true # Do not destoy in any context, this is for critical resources
-#     # ignore_changes = [ ami, subnet_id ] # Ignore the changes about the arguments
-#     # replace_triggered_by = [ aws_subnet.private_subnet ] # If the resources in args suffer a change will trigger the replacement
-#   }
+  #   lifecycle {
+  #     create_before_destroy = true # Invert the order
+  #     # prevent_destroy = true # Do not destoy in any context, this is for critical resources
+  #     # ignore_changes = [ ami, subnet_id ] # Ignore the changes about the arguments
+  #     # replace_triggered_by = [ aws_subnet.private_subnet ] # If the resources in args suffer a change will trigger the replacement
+  #   }
 }
 
 # Here on the line 'aws_subnet.public_subnet.id' there's an implicit dependency, where it is needed first create the 'public_subnet' and then create this 'EC2_Public_Instance'
