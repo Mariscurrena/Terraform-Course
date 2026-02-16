@@ -13,3 +13,5 @@ Instance: 3.238.89.178 has been destroyed! :(
 Our Public IP is: 100.29.190.168 
 Instance: 100.29.190.168 has been destroyed! :( 
 Our Public IP is: 44.192.43.241 
+Instance: 44.192.43.241 has been destroyed! :( 
+Our Public IP is: 52.3.236.132 

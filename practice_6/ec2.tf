@@ -63,3 +63,23 @@ resource "aws_instance" "public_instance" {
 # # # # # depends_on [
 # # # # #     aws_subnet=public_subnet
 # # # # # ]
+
+
+############################ IMPORT EXAMPLE ###################################
+# Import a resource
+# Every import could be different, for that reason it is important to read the official documentation
+# Useful using terraform state show 'resource', if it is needed to clone using IaC an existing resource that was created on the web console
+# This approach required manual hardening
+# resource "aws_instance" "MyWebServer" {
+#     ami                                  = "ami-0c1fe732b5494dc14"
+#     instance_type                        = "t3.micro"
+#     key_name                             = data.aws_key_pair.key.key_name
+#     subnet_id                            = aws_subnet.public_subnet.id
+#     tags                                 = {
+#         "Name" = "MyServer"
+#     }
+#     tenancy                              = "default"
+#     vpc_security_group_ids               = [
+#         aws_security_group.sg_public_instance.id
+#     ]
+# }
