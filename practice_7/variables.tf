@@ -25,3 +25,9 @@ variable "ec2_specs" {
   description = "Instance params"
   type        = map(string)
 }
+
+variable "enable_monitoring" {
+  description = "Enable the monitoring instance deployment"
+  # type = bool
+  type = number
+}
