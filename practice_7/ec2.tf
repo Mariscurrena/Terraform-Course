@@ -40,7 +40,7 @@ resource "aws_instance" "public_instance" {
   vpc_security_group_ids = [aws_security_group.sg_public_instance.id]
   user_data              = file("scripts/userdata.sh")
   tags = {
-    "name" = each.value # Tha way to consute set()'s elements
+    "Name" = "${each.value}-${local.sufix}" # Tha way to consute set()'s elements
   }
 }
 # This approach support targeting an specific resource creating with a bucle foer delete it or modify it. 
@@ -61,6 +61,6 @@ resource "aws_instance" "monitoring_instance" {
   vpc_security_group_ids = [aws_security_group.sg_public_instance.id]
   user_data              = file("scripts/userdata.sh")
   tags = {
-    "name" = "Monitoring"
+    "name" = "Monitoring-${local.sufix}"
   }
 }

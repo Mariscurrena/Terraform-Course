@@ -1,9 +1,9 @@
 # DRY -- Don't Repeat Yourself -- Best Practices using variables
-resource "aws_vpc" "vpc_virgin" {
+resource "aws_vpc" "vpc_virginia" {
   cidr_block = var.virginia_cidr
   # tags = var.tags -- Tags from provider
   tags = {
-    "Name" = "VPC_Virgin"
+    "Name" = "VPC_virginia-${local.sufix}"
   }
 }
 
@@ -17,22 +17,22 @@ data "aws_availability_zones" "available" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  vpc_id                  = aws_vpc.vpc_virgin.id
+  vpc_id                  = aws_vpc.vpc_virginia.id
   cidr_block              = var.subnets[0]
   map_public_ip_on_launch = true # This creates the public subnet - Public redirection for resources
   # tags = var.tags
   tags = {
-    "Name" = "public_subnet"
+    "Name" = "public_subnet-${local.sufix}"
   }
   availability_zone = data.aws_availability_zones.available.names[0] # First instance of the availability zones
 }
 
 resource "aws_subnet" "private_subnet" {
-  vpc_id     = aws_vpc.vpc_virgin.id
+  vpc_id     = aws_vpc.vpc_virginia.id
   cidr_block = var.subnets[1]
   # tags = var.tags
   tags = {
-    "Name" = "private_subnet"
+    "Name" = "private_subnet-${local.sufix}"
   }
   depends_on = [
     aws_subnet.public_subnet
@@ -42,17 +42,17 @@ resource "aws_subnet" "private_subnet" {
 # Only can be an internet gateway per VPC
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vpc_virgin.id
+  vpc_id = aws_vpc.vpc_virginia.id
 
   tags = {
-    Name = "IGW_Virgin_VPC"
+    Name = "IGW_virginia_VPC-${local.sufix}"
   }
 }
 
 # Route Table - It is not recommended use the default one
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
 resource "aws_route_table" "public_crt" {
-  vpc_id = aws_vpc.vpc_virgin.id
+  vpc_id = aws_vpc.vpc_virginia.id
 
   route {
     cidr_block = "0.0.0.0/0" # Supports go to internet from every route
@@ -60,7 +60,7 @@ resource "aws_route_table" "public_crt" {
   }
 
   tags = {
-    Name = "public crt"
+    Name = "Public_CRT-${local.sufix}"
   }
 }
 
@@ -77,7 +77,7 @@ resource "aws_route_table_association" "crta_public_subnet" {
 resource "aws_security_group" "sg_public_instance" {
   name        = "Public Instance Security Group"
   description = "Allow SSH inboud traffic and ALL egress traffic"
-  vpc_id      = aws_vpc.vpc_virgin.id
+  vpc_id      = aws_vpc.vpc_virginia.id
 
   ingress {
     description = "SSH over internet"
@@ -96,6 +96,6 @@ resource "aws_security_group" "sg_public_instance" {
   }
 
   tags = {
-    Name = "Public Instance Security Group"
+    Name = "Public_Instance_Security_Group-${local.sufix}"
   }
 }

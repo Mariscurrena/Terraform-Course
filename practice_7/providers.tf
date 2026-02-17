@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/aws"
       version = ">=6.15.0, <6.31.0, !=6.15.0" # Constrain: Provider version. Setting limits to avoid the most recent (bugs)
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.8.1"
+    }
   }
   required_version = "~>1.14" # Constrain: Terraform recommended way. Allows minor up versions from the specified one
 }
