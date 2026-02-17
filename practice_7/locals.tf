@@ -4,9 +4,9 @@ locals {
 }
 
 resource "random_string" "sufix-s3" {
-  length = 8
+  length  = 8
   special = false
-  upper = false
+  upper   = false
 }
 
 locals {

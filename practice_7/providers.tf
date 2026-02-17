@@ -5,7 +5,7 @@ terraform {
       version = ">=6.15.0, <6.31.0, !=6.15.0" # Constrain: Provider version. Setting limits to avoid the most recent (bugs)
     }
     random = {
-      source = "hashicorp/random"
+      source  = "hashicorp/random"
       version = "3.8.1"
     }
   }

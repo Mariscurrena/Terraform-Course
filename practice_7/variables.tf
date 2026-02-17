@@ -31,3 +31,9 @@ variable "enable_monitoring" {
   # type = bool
   type = number
 }
+
+#Dynamic Block
+variable "ingress_port_list" {
+  description = "Ingress Port List"
+  type        = list(number)
+}

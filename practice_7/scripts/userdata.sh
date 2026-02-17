@@ -6,3 +6,9 @@ echo "IP details: $(ip a s)" >> /home/ec2-user/network.txt
 #Change permissions
 chown ec2-user:ec2-user /home/ec2-user/README.txt
 chown ec2-user:ec2-user /home/ec2-user/network.txt
+
+# Dynamic Block Updates
+yum update -y
+yum install httpd -y
+systemctl enable httpd
+systemctl start httpd
