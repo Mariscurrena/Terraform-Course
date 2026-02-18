@@ -1,0 +1,17 @@
+public IP: 100.52.181.177 
+Instance: 100.52.181.177 has been destroyed! :( 
+Our Public IP is: 34.205.191.25 
+Instance: 34.205.191.25 has been destroyed! :( 
+Our Public IP is: 44.203.247.84 
+Instance: 44.203.247.84 has been destroyed! :( 
+Our Public IP is: 44.211.86.70 
+Instance: 44.211.86.70 has been destroyed! :( 
+Our Public IP is: 44.213.114.201 
+Instance: 44.213.114.201 has been destroyed! :( 
+Our Public IP is: 3.238.89.178 
+Instance: 3.238.89.178 has been destroyed! :( 
+Our Public IP is: 100.29.190.168 
+Instance: 100.29.190.168 has been destroyed! :( 
+Our Public IP is: 44.192.43.241 
+Instance: 44.192.43.241 has been destroyed! :( 
+Our Public IP is: 52.3.236.132 
